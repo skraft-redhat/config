@@ -27,13 +27,13 @@ default_description=$(minimal_description) (Currently identical to 'minimal').
 default_include=$(minimal_include)
 default_exclude=$(minimal_exclude)
 
-TEMPLATE=src/policy.yaml.tmpl
+POLICY_TEMPLATE=src/policy.yaml.tmpl
 
 ifndef GOMPLATE
 	GOMPLATE=gomplate
 endif
 
-%/policy.yaml: $(TEMPLATE) Makefile
+%/policy.yaml: $(POLICY_TEMPLATE) Makefile
 	@mkdir -p $(*)
 	@env NAME=$(*) \
 	  DESCRIPTION='$($(*)_description)' \
@@ -49,17 +49,23 @@ POLICY_FILES=\
   slsa3/policy.yaml \
   everything/policy.yaml
 
-all: $(POLICY_FILES)
+README_TEMPLATE=src/README.md.tmpl
+README_FILE=README.md
+
+$(README_FILE): $(README_TEMPLATE) Makefile
+	@env POLICY_FILES="$(POLICY_FILES)" $(GOMPLATE) --file $< > $@
+
+all: $(POLICY_FILES) $(README_FILE)
 
 clean:
-	@rm -rf $(POLICY_FILES)
+	@rm -rf $(POLICY_FILES) $(README_FILE)
 
 refresh: clean all
 
-# Should produce an error if any policy files are not in sync with the template
+# Should produce an error if any generated files are not in sync with their template
 update-needed-check:
 	@$(MAKE) --no-print-directory refresh
-	@if [ -n "$$(git diff --name-only -- $(POLICY_FILES))" ]; then echo "Stale generated files found. Refresh needed."; exit 1; fi
+	@if [ -n "$$(git diff --name-only -- $(POLICY_FILES) $(README_FILE))" ]; then echo "Stale generated files found. Refresh needed."; exit 1; fi
 
 # Should produce an error if there is any invalid yaml
 yaml-parse-check:
