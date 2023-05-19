@@ -29,13 +29,17 @@ default_exclude=$(minimal_exclude)
 
 TEMPLATE=src/policy.yaml.tmpl
 
+ifndef GOMPLATE
+	GOMPLATE=gomplate
+endif
+
 %/policy.yaml: $(TEMPLATE) Makefile
 	@mkdir -p $(*)
 	@env NAME=$(*) \
 	  DESCRIPTION='$($(*)_description)' \
 	  INCLUDE='$($(*)_include)' \
 	  EXCLUDE='$($(*)_exclude)' \
-	  gomplate --file $< > $@
+	  $(GOMPLATE) --file $< > $@
 
 POLICY_FILES=\
   default/policy.yaml \
@@ -46,6 +50,22 @@ POLICY_FILES=\
   everything/policy.yaml
 
 all: $(POLICY_FILES)
+
+clean:
+	@rm -rf $(POLICY_FILES)
+
+refresh: clean all
+
+# Should produce an error if any policy files are not in sync with the template
+update-needed-check:
+	@$(MAKE) --no-print-directory refresh
+	@if [ -n "$$(git diff --name-only -- $(POLICY_FILES))" ]; then echo "Stale generated files found. Refresh needed."; exit 1; fi
+
+# Should produce an error if there is any invalid yaml
+yaml-parse-check:
+	@git ls-files '*.yaml' | xargs -n1 yq > /dev/null
+
+ci: update-needed-check yaml-parse-check
 
 # See https://docs.gomplate.ca/installing/ for other installation methods
 install-gomplate:

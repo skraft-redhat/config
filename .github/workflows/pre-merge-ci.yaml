@@ -1,0 +1,30 @@
+
+---
+name: pre-merge-ci
+
+on:
+  pull_request:
+    branches:
+    - main
+
+  push:
+    branches:
+    - main
+
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install gomplate
+      run: make install-gomplate
+
+    - name: Run checks
+      env:
+        # Installed by previous step
+        GOMPLATE: ${HOME}/go/bin/gomplate
+      run: make ci
