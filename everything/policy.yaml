@@ -1,0 +1,36 @@
+#
+# To use this policy with the ec command line:
+#   ec validate image \
+#     --image $IMAGE \
+#     --public-key key.pub \
+#     --policy github.com/enterprise-contract/config//everything
+#
+# To use with an RHTAP Enterprise Contract Integration Test CR:
+#   ...
+#   spec:
+#     params:
+#     - name: POLICY_CONFIGURATION
+#       value: github.com/enterprise-contract/config//everything
+#     ...
+#
+description: >-
+  Include every rule in the default policy source.
+
+publicKey: "k8s://tekton-chains/public-key"
+
+sources:
+  - name: Default
+    policy:
+      - github.com/enterprise-contract/ec-policies//policy/lib
+      - github.com/enterprise-contract/ec-policies//policy/release
+    data:
+      - github.com/enterprise-contract/ec-policies//data
+
+configuration:
+  include:
+    - '*'
+
+  exclude:
+    # Exclude step_image_registries for now since it can cause false
+    # positives due to https://issues.redhat.com/browse/OCPBUGS-8428
+    - step_image_registries
