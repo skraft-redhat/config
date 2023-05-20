@@ -46,3 +46,8 @@ Include every rule in the default policy source.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//everything`
 * Source: [everything/policy.yaml](https://github.com/enterprise-contract/config/blob/main/everything/policy.yaml)
+
+## See also
+
+* [Policy Rule Documentation](https://enterprisecontract.dev/docs/ec-policies/release_policy.html)
+* [Getting Started with Enterprise Contract &amp; Red Hat Trusted Application Pipeline](https://enterprisecontract.dev/docs/user-guide/main/getting-started.html)
