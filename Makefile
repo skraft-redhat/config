@@ -1,31 +1,8 @@
 
 _default: all
 
-# Define descriptions and the include/exclude lists for each policy
-minimal_description=Include a minimal set of basic checks.
-minimal_include=["@minimal"]
-minimal_exclude=[]
 
-slsa1_description=The minimal rules plus the rules for level 1 of SLSA v0.1.
-slsa1_include=["@minimal", "@slsa1"]
-slsa1_exclude=[]
-
-slsa2_description=The minimal rules plus the rules for levels 1 & 2 of SLSA v0.1.
-slsa2_include=["@minimal", "@slsa1", "@slsa2"]
-slsa2_exclude=[]
-
-slsa3_description=The minimal rules plus the rules for levels 1, 2 & 3 of SLSA v0.1.
-slsa3_include=["@minimal", "@slsa1", "@slsa2", "@slsa3"]
-slsa3_exclude=[]
-
-everything_description=Include every rule in the default policy source.
-everything_include=["*"]
-everything_exclude=[]
-
-# Currently the default policy is the same as the minimal policy
-default_description=$(minimal_description) (Currently identical to 'minimal').
-default_include=$(minimal_include)
-default_exclude=$(minimal_exclude)
+DATA_JSON=src/data.json
 
 POLICY_TEMPLATE=src/policy.yaml.tmpl
 
@@ -33,13 +10,9 @@ ifndef GOMPLATE
 	GOMPLATE=gomplate
 endif
 
-%/policy.yaml: $(POLICY_TEMPLATE) Makefile
+%/policy.yaml: $(POLICY_TEMPLATE) $(DATA_JSON) Makefile
 	@mkdir -p $(*)
-	@env NAME=$(*) \
-	  DESCRIPTION='$($(*)_description)' \
-	  INCLUDE='$($(*)_include)' \
-	  EXCLUDE='$($(*)_exclude)' \
-	  $(GOMPLATE) --file $< > $@
+	@env NAME=$(*) $(GOMPLATE) -d data=$(DATA_JSON) --file $< > $@
 
 POLICY_FILES=\
   default/policy.yaml \
@@ -52,8 +25,8 @@ POLICY_FILES=\
 README_TEMPLATE=src/README.md.tmpl
 README_FILE=README.md
 
-$(README_FILE): $(README_TEMPLATE) Makefile
-	@env POLICY_FILES="$(POLICY_FILES)" $(GOMPLATE) --file $< > $@
+$(README_FILE): $(README_TEMPLATE) $(DATA_JSON) Makefile
+	@$(GOMPLATE) -d data=$(DATA_JSON) --file $< > $@
 
 all: $(POLICY_FILES) $(README_FILE)
 

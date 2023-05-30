@@ -1,0 +1,38 @@
+[
+  {
+    "name": "default",
+    "description": "Include a minimal set of basic checks. (Currently identical to 'minimal').",
+    "include": ["@minimal"],
+    "exclude": []
+  },
+  {
+    "name": "minimal",
+    "description": "Include a minimal set of basic checks.",
+    "include": ["@minimal"],
+    "exclude": []
+  },
+  {
+    "name": "slsa1",
+    "description": "The minimal rules plus the rules for level 1 of SLSA v0.1.",
+    "include": ["@minimal", "@slsa1"],
+    "exclude": []
+  },
+  {
+    "name": "slsa2",
+    "description": "The minimal rules plus the rules for levels 1 & 2 of SLSA v0.1.",
+    "include": ["@minimal", "@slsa1", "@slsa2"],
+    "exclude": []
+  },
+  {
+    "name": "slsa3",
+    "description": "The minimal rules plus the rules for levels 1, 2 & 3 of SLSA v0.1.",
+    "include": ["@minimal", "@slsa1", "@slsa2", "@slsa3"],
+    "exclude": []
+  },
+  {
+    "name": "everything",
+    "description": "Include every rule in the default policy source.",
+    "include": ["*"],
+    "exclude": []
+  }
+]

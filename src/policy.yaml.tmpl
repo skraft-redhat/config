@@ -1,20 +1,21 @@
+{{- $name := .Env.NAME -}}{{- range ds "data" -}}{{- if eq .name $name -}}
 #
 # To use this policy with the ec command line:
 #   ec validate image \
 #     --image $IMAGE \
 #     --public-key key.pub \
-#     --policy github.com/enterprise-contract/config//{{ .Env.NAME }}
+#     --policy github.com/enterprise-contract/config//{{ .name }}
 #
 # To use with an RHTAP Enterprise Contract Integration Test CR:
 #   ...
 #   spec:
 #     params:
 #     - name: POLICY_CONFIGURATION
-#       value: github.com/enterprise-contract/config//{{ .Env.NAME }}
+#       value: github.com/enterprise-contract/config//{{ .name }}
 #     ...
 #
 description: >-
-  {{ .Env.DESCRIPTION }}
+  {{ .description }}
 
 publicKey: "k8s://tekton-chains/public-key"
 
@@ -28,9 +29,11 @@ sources:
 
 configuration:
   include:
-    {{ ( .Env.INCLUDE | jsonArray ) | toYAML | strings.Indent 4 | strings.TrimSpace }}
+    {{ .include | toYAML | strings.Indent 4 | strings.TrimSpace }}
 
   exclude:
     # Exclude step_image_registries for now since it can cause false
     # positives due to https://issues.redhat.com/browse/OCPBUGS-8428
-    {{ ( .Env.EXCLUDE | jsonArray | coll.Append "step_image_registries" ) | toYAML | strings.Indent 4 | strings.TrimSpace }}
+    {{ .exclude | coll.Append "step_image_registries" | toYAML | strings.Indent 4 | strings.TrimSpace }}
+
+{{- end -}}{{- end }}

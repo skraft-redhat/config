@@ -7,7 +7,7 @@ The policy configuration files are:
 
 ### Default
 
-Include a minimal set of basic checks. (Currently identical to minimal).
+Include a minimal set of basic checks. (Currently identical to 'minimal').
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//default`
 * Source: [default/policy.yaml](https://github.com/enterprise-contract/config/blob/main/default/policy.yaml)

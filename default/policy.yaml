@@ -14,7 +14,7 @@
 #     ...
 #
 description: >-
-  Include a minimal set of basic checks. (Currently identical to minimal).
+  Include a minimal set of basic checks. (Currently identical to 'minimal').
 
 publicKey: "k8s://tekton-chains/public-key"
 

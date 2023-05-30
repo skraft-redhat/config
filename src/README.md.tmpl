@@ -1,21 +1,17 @@
-{{- $pwd := .Env.PWD -}}
-
 # Enterprise Contract Configuration Files
 
 This repo contains a set of `policy.yaml` files which can be used with
 Enterprise Contract and the Red Hat Trusted Application Pipeline.
 
 The policy configuration files are:
-{{- range ( .Env.POLICY_FILES | strings.Split " " ) }}
-{{- $name := . | strings.Split "/" | coll.Index 0 }}
-{{- defineDatasource $name (printf "file:///%s/%s/policy.yaml" $pwd $name) }}
+{{- range ds "data" }}
 
-### {{ $name | strings.Title | regexp.Replace "Slsa" "SLSA" }}
+### {{ .name | strings.Title | regexp.Replace "Slsa" "SLSA" }}
 
-{{ (datasource $name).description }}
+{{ .description }}
 
-* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ $name }}`
-* Source: [{{ $name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ $name }}/policy.yaml)
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ .name }}`
+* Source: [{{ .name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ .name }}/policy.yaml)
 {{- end }}
 
 ## See also
