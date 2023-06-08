@@ -14,7 +14,7 @@
 #     ...
 #
 description: >-
-  Include a minimal set of basic checks. (Currently identical to 'minimal').
+  Includes rules for levels 1, 2 & 3 of SLSA v0.1.
 
 publicKey: "k8s://tekton-chains/public-key"
 
@@ -28,7 +28,9 @@ sources:
 
 configuration:
   include:
-    - '@minimal'
+    - '@slsa1'
+    - '@slsa2'
+    - '@slsa3'
 
   exclude:
     # Exclude step_image_registries for now since it can cause false
