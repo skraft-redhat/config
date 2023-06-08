@@ -1,8 +1,8 @@
 [
   {
     "name": "default",
-    "description": "Include a minimal set of basic checks. (Currently identical to 'minimal').",
-    "include": ["@minimal"],
+    "description": "Includes rules for levels 1, 2 & 3 of SLSA v0.1.",
+    "include": ["@slsa1", "@slsa2", "@slsa3"],
     "exclude": []
   },
   {

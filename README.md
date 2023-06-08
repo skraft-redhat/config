@@ -7,7 +7,7 @@ The policy configuration files are:
 
 ### Default
 
-Include a minimal set of basic checks. (Currently identical to 'minimal').
+Includes rules for levels 1, 2 & 3 of SLSA v0.1.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//default`
 * Source: [default/policy.yaml](https://github.com/enterprise-contract/config/blob/main/default/policy.yaml)
