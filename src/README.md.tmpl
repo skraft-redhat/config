@@ -3,6 +3,11 @@
 This repo contains a set of `policy.yaml` files which can be used with
 Enterprise Contract and the Red Hat Trusted Application Pipeline.
 
+There is a predefined RHTAP Integration Test pipeline definition for each of
+these configs which can be used when creating an Integration Test in RHTAP as
+per the [documentation
+here](https://redhat-appstudio.github.io/docs.appstudio.io/Documentation/main/how-to-guides/proc_managing-compliance-with-the-enterprise-contract/).
+
 The policy configuration files are:
 {{- range ds "data" }}
 
@@ -12,6 +17,9 @@ The policy configuration files are:
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ .name }}`
 * Source: [{{ .name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ .name }}/policy.yaml)
+* RHTAP Integration Test pipeline definition:
+    * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
+    * Path in repository: [`pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml)
 {{- end }}
 
 ## See also
