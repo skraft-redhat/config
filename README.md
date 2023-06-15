@@ -26,9 +26,7 @@ Include a minimal set of basic checks.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//minimal`
 * Source: [minimal/policy.yaml](https://github.com/enterprise-contract/config/blob/main/minimal/policy.yaml)
-* RHTAP Integration Test pipeline definition:
-    * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
-    * Path in repository: [`pipelines/enterprise-contract-minimal.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-minimal.yaml)
+
 
 ### SLSA1
 
