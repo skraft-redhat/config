@@ -16,6 +16,7 @@ Includes rules for levels 1, 2 & 3 of SLSA v0.1.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//default`
 * Source: [default/policy.yaml](https://github.com/enterprise-contract/config/blob/main/default/policy.yaml)
+* Collections: [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1), [@slsa2](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa2), [@slsa3](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa3)
 * RHTAP Integration Test pipeline definition:
     * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
     * Path in repository: [`pipelines/enterprise-contract.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract.yaml)
@@ -26,6 +27,7 @@ Include the set of policy rules required for Red Hat products.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//redhat`
 * Source: [redhat/policy.yaml](https://github.com/enterprise-contract/config/blob/main/redhat/policy.yaml)
+* Collections: [@redhat](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#redhat)
 * RHTAP Integration Test pipeline definition:
     * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
     * Path in repository: [`pipelines/enterprise-contract-redhat.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-redhat.yaml)
@@ -36,6 +38,7 @@ The minimal rules plus the rules for level 1 of SLSA v0.1.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa1`
 * Source: [slsa1/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa1/policy.yaml)
+* Collections: [@minimal](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#minimal), [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1)
 * RHTAP Integration Test pipeline definition:
     * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
     * Path in repository: [`pipelines/enterprise-contract-slsa1.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa1.yaml)
@@ -46,6 +49,7 @@ The minimal rules plus the rules for levels 1 & 2 of SLSA v0.1.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa2`
 * Source: [slsa2/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa2/policy.yaml)
+* Collections: [@minimal](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#minimal), [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1), [@slsa2](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa2)
 * RHTAP Integration Test pipeline definition:
     * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
     * Path in repository: [`pipelines/enterprise-contract-slsa2.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa2.yaml)
@@ -56,6 +60,7 @@ The minimal rules plus the rules for levels 1, 2 & 3 of SLSA v0.1.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa3`
 * Source: [slsa3/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa3/policy.yaml)
+* Collections: [@minimal](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#minimal), [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1), [@slsa2](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa2), [@slsa3](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa3)
 * RHTAP Integration Test pipeline definition:
     * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
     * Path in repository: [`pipelines/enterprise-contract-slsa3.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa3.yaml)
@@ -66,6 +71,7 @@ Include every rule in the default policy source.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//everything`
 * Source: [everything/policy.yaml](https://github.com/enterprise-contract/config/blob/main/everything/policy.yaml)
+* Collections:
 * RHTAP Integration Test pipeline definition:
     * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
     * Path in repository: [`pipelines/enterprise-contract-everything.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-everything.yaml)
