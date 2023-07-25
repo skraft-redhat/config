@@ -14,7 +14,7 @@
 #     ...
 #
 description: >-
-  Includes rules for levels 1, 2 & 3 of SLSA v0.1.
+  Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new RHTAP applications.
 
 publicKey: "k8s://tekton-chains/public-key"
 

@@ -14,7 +14,7 @@
 #     ...
 #
 description: >-
-  Include the set of policy rules required for Red Hat products.
+  Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.
 
 publicKey: "k8s://tekton-chains/public-key"
 

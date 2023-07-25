@@ -12,7 +12,7 @@ The policy configuration files are:
 
 ### Default
 
-Includes rules for levels 1, 2 & 3 of SLSA v0.1.
+Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new RHTAP applications.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//default`
 * Source: [default/policy.yaml](https://github.com/enterprise-contract/config/blob/main/default/policy.yaml)
@@ -22,7 +22,7 @@ Includes rules for levels 1, 2 & 3 of SLSA v0.1.
 
 ### Redhat
 
-Include the set of policy rules required for Red Hat products.
+Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//redhat`
 * Source: [redhat/policy.yaml](https://github.com/enterprise-contract/config/blob/main/redhat/policy.yaml)
@@ -32,7 +32,7 @@ Include the set of policy rules required for Red Hat products.
 
 ### SLSA1
 
-The minimal rules plus the rules for level 1 of SLSA v0.1.
+Rules specifically related to levels 1 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa1`
 * Source: [slsa1/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa1/policy.yaml)
@@ -42,7 +42,7 @@ The minimal rules plus the rules for level 1 of SLSA v0.1.
 
 ### SLSA2
 
-The minimal rules plus the rules for levels 1 & 2 of SLSA v0.1.
+Rules specifically related to levels 1 & 2 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa2`
 * Source: [slsa2/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa2/policy.yaml)
@@ -52,7 +52,7 @@ The minimal rules plus the rules for levels 1 & 2 of SLSA v0.1.
 
 ### SLSA3
 
-The minimal rules plus the rules for levels 1, 2 & 3 of SLSA v0.1.
+Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa3`
 * Source: [slsa3/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa3/policy.yaml)
@@ -62,7 +62,7 @@ The minimal rules plus the rules for levels 1, 2 & 3 of SLSA v0.1.
 
 ### Everything
 
-Include every rule in the default policy source.
+Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//everything`
 * Source: [everything/policy.yaml](https://github.com/enterprise-contract/config/blob/main/everything/policy.yaml)

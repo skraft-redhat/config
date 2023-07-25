@@ -16,7 +16,7 @@
 #     ...
 #
 description: >-
-  Include a minimal set of basic checks.
+  Includes a set of basic checks that are expected to pass for all RHTAP builds.
 
 publicKey: "k8s://tekton-chains/public-key"
 
