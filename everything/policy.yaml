@@ -14,7 +14,7 @@
 #     ...
 #
 description: >-
-  Include every rule in the default policy source.
+  Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.
 
 publicKey: "k8s://tekton-chains/public-key"
 

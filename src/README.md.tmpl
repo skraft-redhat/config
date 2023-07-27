@@ -19,7 +19,7 @@ The policy configuration files are:
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ .name }}`
 * Source: [{{ .name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ .name }}/policy.yaml)
 * RHTAP Integration Test pipeline definition:
-    * Github URL: `https://github.com/redhat-appstudio/build-definitions.git`
+    * Github URL: `https://github.com/redhat-appstudio/build-definitions`
     * Path in repository: [`pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml)
 {{- end -}}
 {{- end }}

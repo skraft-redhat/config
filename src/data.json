@@ -1,44 +1,44 @@
 [
   {
     "name": "default",
-    "description": "Includes rules for levels 1, 2 & 3 of SLSA v0.1.",
+    "description": "Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new RHTAP applications.",
     "include": ["@slsa1", "@slsa2", "@slsa3"],
     "exclude": []
   },
   {
     "name": "minimal",
-    "description": "Include a minimal set of basic checks.",
+    "description": "Includes a set of basic checks that are expected to pass for all RHTAP builds.",
     "include": ["@minimal"],
     "exclude": [],
     "deprecated": true
   },
   {
     "name": "redhat",
-    "description": "Include the set of policy rules required for Red Hat products.",
+    "description": "Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.",
     "include": ["@redhat"],
     "exclude": []
   },
   {
     "name": "slsa1",
-    "description": "The minimal rules plus the rules for level 1 of SLSA v0.1.",
+    "description": "Rules specifically related to levels 1 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.",
     "include": ["@minimal", "@slsa1"],
     "exclude": []
   },
   {
     "name": "slsa2",
-    "description": "The minimal rules plus the rules for levels 1 & 2 of SLSA v0.1.",
+    "description": "Rules specifically related to levels 1 & 2 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.",
     "include": ["@minimal", "@slsa1", "@slsa2"],
     "exclude": []
   },
   {
     "name": "slsa3",
-    "description": "The minimal rules plus the rules for levels 1, 2 & 3 of SLSA v0.1.",
+    "description": "Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.",
     "include": ["@minimal", "@slsa1", "@slsa2", "@slsa3"],
     "exclude": []
   },
   {
     "name": "everything",
-    "description": "Include every rule in the default policy source.",
+    "description": "Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.",
     "include": ["*"],
     "exclude": []
   }
