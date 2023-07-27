@@ -12,7 +12,7 @@ The policy configuration files are:
 {{- range ds "data" }}
 {{- if not (index . "deprecated") }}
 
-### {{ .name | strings.Title | regexp.Replace "Slsa" "SLSA" }}
+### {{ .name | strings.Title | regexp.Replace "Slsa" "SLSA" | regexp.Replace "Redhat" "Red Hat" }}
 
 {{ .description }}
 

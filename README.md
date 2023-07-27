@@ -21,7 +21,7 @@ Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used
     * Github URL: `https://github.com/redhat-appstudio/build-definitions`
     * Path in repository: [`pipelines/enterprise-contract.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract.yaml)
 
-### Redhat
+### Red Hat
 
 Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.
 
