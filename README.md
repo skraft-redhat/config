@@ -32,28 +32,6 @@ Includes the full set of rules and policies required internally by Red Hat when 
     * Github URL: `https://github.com/redhat-appstudio/build-definitions`
     * Path in repository: [`pipelines/enterprise-contract-redhat.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-redhat.yaml)
 
-### SLSA1
-
-Rules specifically related to levels 1 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
-
-* URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa1`
-* Source: [slsa1/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa1/policy.yaml)
-* Collections: [@minimal](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#minimal), [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1)
-* RHTAP Integration Test pipeline definition:
-    * Github URL: `https://github.com/redhat-appstudio/build-definitions`
-    * Path in repository: [`pipelines/enterprise-contract-slsa1.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa1.yaml)
-
-### SLSA2
-
-Rules specifically related to levels 1 & 2 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
-
-* URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa2`
-* Source: [slsa2/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa2/policy.yaml)
-* Collections: [@minimal](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#minimal), [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1), [@slsa2](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa2)
-* RHTAP Integration Test pipeline definition:
-    * Github URL: `https://github.com/redhat-appstudio/build-definitions`
-    * Path in repository: [`pipelines/enterprise-contract-slsa2.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa2.yaml)
-
 ### SLSA3
 
 Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
