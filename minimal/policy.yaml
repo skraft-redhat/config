@@ -18,7 +18,7 @@
 description: >-
   Includes a set of basic checks that are expected to pass for all RHTAP builds.
 
-publicKey: "k8s://tekton-chains/public-key"
+publicKey: "k8s://openshift-pipelines/public-key"
 
 sources:
   - name: Default
