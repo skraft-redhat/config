@@ -2,12 +2,14 @@
   {
     "name": "default",
     "description": "Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new RHTAP applications.",
+    "environment": "rhtap",
     "include": ["@slsa1", "@slsa2", "@slsa3"],
     "exclude": []
   },
   {
     "name": "minimal",
     "description": "Includes a set of basic checks that are expected to pass for all RHTAP builds.",
+    "environment": "rhtap",
     "include": ["@minimal"],
     "exclude": [],
     "deprecated": true
@@ -15,12 +17,14 @@
   {
     "name": "redhat",
     "description": "Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.",
+    "environment": "rhtap",
     "include": ["@redhat"],
     "exclude": []
   },
   {
     "name": "slsa1",
     "description": "Rules specifically related to levels 1 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.",
+    "environment": "rhtap",
     "include": ["@minimal", "@slsa1"],
     "exclude": [],
     "deprecated": true
@@ -28,6 +32,7 @@
   {
     "name": "slsa2",
     "description": "Rules specifically related to levels 1 & 2 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.",
+    "environment": "rhtap",
     "include": ["@minimal", "@slsa1", "@slsa2"],
     "exclude": [],
     "deprecated": true
@@ -35,13 +40,22 @@
   {
     "name": "slsa3",
     "description": "Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.",
+    "environment": "rhtap",
     "include": ["@minimal", "@slsa1", "@slsa2", "@slsa3"],
     "exclude": []
   },
   {
     "name": "everything",
     "description": "Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.",
+    "environment": "rhtap",
     "include": ["*"],
+    "exclude": []
+  },
+  {
+    "name": "github-default",
+    "description": "Rules for container images built via GitHub Workflows.",
+    "environment": "github",
+    "include": ["@github"],
     "exclude": []
   }
 ]

@@ -1,0 +1,24 @@
+#
+# To use this policy with the ec command line:
+#   ec validate image \
+#     --image $IMAGE \
+#     --public-key key.pub \
+#     --policy github.com/enterprise-contract/config//github-default
+#
+description: >-
+  Rules for container images built via GitHub Workflows.
+
+sources:
+  - name: Default
+    policy:
+      - github.com/enterprise-contract/ec-policies//policy/lib
+      - github.com/enterprise-contract/ec-policies//policy/release
+    data:
+      - github.com/enterprise-contract/ec-policies//data
+
+configuration:
+  include:
+    - '@github'
+
+  exclude:
+    []

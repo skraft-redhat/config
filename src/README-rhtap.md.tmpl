@@ -1,0 +1,15 @@
+### {{ .name | strings.Title | regexp.Replace "Slsa" "SLSA" | regexp.Replace "Redhat" "Red Hat" | regexp.Replace "Github" "GitHub" | regexp.Replace "-" " "}}
+
+{{ .description }}
+
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ .name }}`
+* Source: [{{ .name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ .name }}/policy.yaml)
+* Collections:{{ $comma := false }}{{ range .include -}}
+  {{- if strings.HasPrefix "@" . -}}
+    {{- if not $comma }}{{ $comma = true }} {{ else }}, {{ end -}}
+    [{{ . }}](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#{{ strings.TrimPrefix "@" . }})
+  {{- end -}}
+{{- end }}
+* RHTAP Integration Test pipeline definition:
+  * Github URL: `https://github.com/redhat-appstudio/build-definitions`
+  * Path in repository: [`pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml)

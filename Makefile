@@ -5,6 +5,8 @@ _default: all
 DATA_JSON=src/data.json
 
 POLICY_TEMPLATE=src/policy.yaml.tmpl
+POLICY_RHTAP_TEMPLATE='src/policy-rhtap.yaml.tmpl'
+POLICY_GITHUB_TEMPLATE='src/policy-github.yaml.tmpl'
 
 ifndef GOMPLATE
 	GOMPLATE=gomplate
@@ -12,15 +14,21 @@ endif
 
 %/policy.yaml: $(POLICY_TEMPLATE) $(DATA_JSON) Makefile
 	@mkdir -p $(*)
-	@env NAME=$(*) $(GOMPLATE) -d data=$(DATA_JSON) --file $< > $@
+	@env NAME=$(*) $(GOMPLATE) -d data=$(DATA_JSON) --file $< \
+		-t rhtap=$(POLICY_RHTAP_TEMPLATE) -t github=$(POLICY_GITHUB_TEMPLATE) \
+		> $@
 
 POLICY_FILES=$(shell jq -r '"\(.[].name)/policy.yaml"' src/data.json)
 
 README_TEMPLATE=src/README.md.tmpl
+README_RHTAP_TEMPLATE=src/README-rhtap.md.tmpl
+README_GITHUB_TEMPLATE=src/README-github.md.tmpl
 README_FILE=README.md
 
 $(README_FILE): $(README_TEMPLATE) $(DATA_JSON) Makefile
-	@$(GOMPLATE) -d data=$(DATA_JSON) --file $< > $@
+	@$(GOMPLATE) -d data=$(DATA_JSON) --file $< \
+		-t rhtap=$(README_RHTAP_TEMPLATE) -t github=$(README_GITHUB_TEMPLATE) \
+		> $@
 
 all: $(POLICY_FILES) $(README_FILE)
 
