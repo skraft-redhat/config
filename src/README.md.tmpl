@@ -1,35 +1,36 @@
 # Enterprise Contract Configuration Files
 
-This repo contains a set of `policy.yaml` files which can be used with
-Enterprise Contract and the Red Hat Trusted Application Pipeline.
+This repo contains a set of `policy.yaml` files which can be used by the [Enterprise Contract
+Command Line Interface](https://github.com/enterprise-contract/ec-cli) with a variety of
+environments.
 
-There is a predefined RHTAP Integration Test pipeline definition for each of
-these configs which can be used when creating an Integration Test in RHTAP as
-per the [documentation
+## Red Hat Trusted Application Pipeline
+
+When using the [Red Hat Trusted Application
+Pipeline](https://developers.redhat.com/products/trusted-software-supply-chain/overview)
+environment, there is a predefined Integration Test pipeline definition for each of the configs in
+this section. They can be used when creating an Integration Test in RHTAP as per the [documentation
 here](https://redhat-appstudio.github.io/docs.appstudio.io/Documentation/main/how-to-guides/proc_managing-compliance-with-the-enterprise-contract/).
 
 The policy configuration files are:
-{{- range ds "data" }}
+{{ range ds "data" }}
 {{- if not (index . "deprecated") }}
-
-### {{ .name | strings.Title | regexp.Replace "Slsa" "SLSA" | regexp.Replace "Redhat" "Red Hat" }}
-
-{{ .description }}
-
-* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ .name }}`
-* Source: [{{ .name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ .name }}/policy.yaml)
-* Collections:{{ $comma := false }}{{ range .include -}}
-  {{- if strings.HasPrefix "@" . -}}
-    {{- if not $comma }}{{ $comma = true }} {{ else }}, {{ end -}}
-    [{{ . }}](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#{{ strings.TrimPrefix "@" . }})
-  {{- end -}}
-{{- end }}
-* RHTAP Integration Test pipeline definition:
-    * Github URL: `https://github.com/redhat-appstudio/build-definitions`
-    * Path in repository: [`pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml)
+{{- if eq .environment "rhtap" }}
+{{ template "rhtap" . }}
+{{- end -}}
 {{- end -}}
 {{- end }}
+## GitHub
 
+Container images built via [GitHub Actions](https://docs.github.com/actions) can be verified with
+the following policy configurations.
+{{ range ds "data" }}
+{{- if not (index . "deprecated") }}
+{{- if eq .environment "github" }}
+{{ template "github" . }}
+{{- end }}
+{{- end -}}
+{{- end }}
 ## See also
 
 * [Policy Rule Documentation](https://enterprisecontract.dev/docs/ec-policies/release_policy.html)

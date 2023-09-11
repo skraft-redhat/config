@@ -1,0 +1,12 @@
+### {{ .name | strings.Title | regexp.Replace "Github" "GitHub" | regexp.Replace "-" " "}}
+
+{{ .description }}
+
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ .name }}`
+* Source: [{{ .name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ .name }}/policy.yaml)
+* Collections:{{ $comma := false }}{{ range .include -}}
+  {{- if strings.HasPrefix "@" . -}}
+    {{- if not $comma }}{{ $comma = true }} {{ else }}, {{ end -}}
+    [{{ . }}](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#{{ strings.TrimPrefix "@" . }})
+  {{- end -}}
+{{- end }}
