@@ -13,8 +13,7 @@ sources:
     policy:
       - github.com/enterprise-contract/ec-policies//policy/lib
       - github.com/enterprise-contract/ec-policies//policy/release
-    data:
-      - github.com/enterprise-contract/ec-policies//data
+    data: []
 
 configuration:
   include:
