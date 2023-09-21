@@ -1,10 +1,12 @@
 {{- $name := .Env.NAME -}}
-{{- range ds "data" -}}
-{{- if eq .name $name -}}
-{{- if eq .environment "rhtap" -}}
-{{ template "rhtap" . }}
-{{- else -}}
-{{ template "github" . }}
-{{- end -}}
-{{- end -}}
+{{- range $key, $data := ds "data" }}
+  {{- if eq $key $name }}
+    {{- with coll.Dict "directory" $key "data" $data }}
+      {{- if eq .data.environment "rhtap" }}
+        {{- template "rhtap" . }}
+      {{- else }}
+        {{- template "github" . }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
 {{- end }}

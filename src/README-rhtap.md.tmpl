@@ -1,9 +1,10 @@
-### {{ .name | strings.Title | regexp.Replace "Slsa" "SLSA" | regexp.Replace "Redhat" "Red Hat" | regexp.Replace "Github" "GitHub" | regexp.Replace "-" " "}}
+{{ with .data }}
+### {{ .name }}
 
 {{ .description }}
 
-* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ .name }}`
-* Source: [{{ .name }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ .name }}/policy.yaml)
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ $.directory }}`
+* Source: [{{ $.directory }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ $.directory }}/policy.yaml)
 * Collections:{{ $comma := false }}{{ range .include -}}
   {{- if strings.HasPrefix "@" . -}}
     {{- if not $comma }}{{ $comma = true }} {{ else }}, {{ end -}}
@@ -12,4 +13,5 @@
 {{- end }}
 * RHTAP Integration Test pipeline definition:
   * Github URL: `https://github.com/redhat-appstudio/build-definitions`
-  * Path in repository: [`pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract{{ if ne .name "default" }}-{{ .name }}{{ end }}.yaml)
+  * Path in repository: [`pipelines/enterprise-contract{{ if ne $.directory "default" }}-{{ $.directory }}{{ end }}.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract{{ if ne $.directory "default" }}-{{ $.directory }}{{ end }}.yaml)
+{{- end }}

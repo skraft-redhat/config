@@ -13,6 +13,7 @@
 #       value: github.com/enterprise-contract/config//everything
 #     ...
 #
+name: Everything (experimental)
 description: >-
   Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.
   Available collections are defined in

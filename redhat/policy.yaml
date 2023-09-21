@@ -13,6 +13,7 @@
 #       value: github.com/enterprise-contract/config//redhat
 #     ...
 #
+name: Red Hat
 description: >-
   Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.
   Available collections are defined in

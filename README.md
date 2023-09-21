@@ -25,6 +25,17 @@ Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used
   * Github URL: `https://github.com/redhat-appstudio/build-definitions`
   * Path in repository: [`pipelines/enterprise-contract.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract.yaml)
 
+### Everything (experimental)
+
+Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.
+
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//everything`
+* Source: [everything/policy.yaml](https://github.com/enterprise-contract/config/blob/main/everything/policy.yaml)
+* Collections:
+* RHTAP Integration Test pipeline definition:
+  * Github URL: `https://github.com/redhat-appstudio/build-definitions`
+  * Path in repository: [`pipelines/enterprise-contract-everything.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-everything.yaml)
+
 ### Red Hat
 
 Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.
@@ -36,7 +47,7 @@ Includes the full set of rules and policies required internally by Red Hat when 
   * Github URL: `https://github.com/redhat-appstudio/build-definitions`
   * Path in repository: [`pipelines/enterprise-contract-redhat.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-redhat.yaml)
 
-### Red Hat No Hermetic
+### Red Hat (non hermetic)
 
 Includes most of the rules and policies required internally by Red Hat when building Red Hat products. It excludes the requirement of hermetic builds.
 
@@ -58,16 +69,6 @@ Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic 
   * Github URL: `https://github.com/redhat-appstudio/build-definitions`
   * Path in repository: [`pipelines/enterprise-contract-slsa3.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa3.yaml)
 
-### Everything
-
-Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.
-
-* URL for Enterprise Contract: `github.com/enterprise-contract/config//everything`
-* Source: [everything/policy.yaml](https://github.com/enterprise-contract/config/blob/main/everything/policy.yaml)
-* Collections:
-* RHTAP Integration Test pipeline definition:
-  * Github URL: `https://github.com/redhat-appstudio/build-definitions`
-  * Path in repository: [`pipelines/enterprise-contract-everything.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-everything.yaml)
 
 ## GitHub
 

@@ -13,6 +13,7 @@
 #       value: github.com/enterprise-contract/config//redhat-no-hermetic
 #     ...
 #
+name: Red Hat (non hermetic)
 description: >-
   Includes most of the rules and policies required internally by Red Hat when building Red Hat products. It excludes the requirement of hermetic builds.
   Available collections are defined in
