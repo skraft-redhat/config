@@ -36,6 +36,17 @@ Includes the full set of rules and policies required internally by Red Hat when 
   * Github URL: `https://github.com/redhat-appstudio/build-definitions`
   * Path in repository: [`pipelines/enterprise-contract-redhat.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-redhat.yaml)
 
+### Red Hat No Hermetic
+
+Includes most of the rules and policies required internally by Red Hat when building Red Hat products. It excludes the requirement of hermetic builds.
+
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//redhat-no-hermetic`
+* Source: [redhat-no-hermetic/policy.yaml](https://github.com/enterprise-contract/config/blob/main/redhat-no-hermetic/policy.yaml)
+* Collections: [@redhat](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#redhat)
+* RHTAP Integration Test pipeline definition:
+  * Github URL: `https://github.com/redhat-appstudio/build-definitions`
+  * Path in repository: [`pipelines/enterprise-contract-redhat-no-hermetic.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-redhat-no-hermetic.yaml)
+
 ### SLSA3
 
 Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
