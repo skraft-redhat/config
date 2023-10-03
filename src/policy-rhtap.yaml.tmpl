@@ -1,3 +1,4 @@
+{{ with .data -}}
 #
 {{ if index . "deprecated" -}}
 # ** DEPRECATED **
@@ -7,16 +8,17 @@
 #   ec validate image \
 #     --image $IMAGE \
 #     --public-key key.pub \
-#     --policy github.com/enterprise-contract/config//{{ .name }}
+#     --policy github.com/enterprise-contract/config//{{ $.directory }}
 #
 # To use with an RHTAP Enterprise Contract Integration Test CR:
 #   ...
 #   spec:
 #     params:
 #     - name: POLICY_CONFIGURATION
-#       value: github.com/enterprise-contract/config//{{ .name }}
+#       value: github.com/enterprise-contract/config//{{ $.directory }}
 #     ...
 #
+name: {{.name}}
 description: >-
   {{ .description }}
   Available collections are defined in
@@ -44,3 +46,4 @@ configuration:
     # Exclude step_image_registries for now since it can cause false
     # positives due to https://issues.redhat.com/browse/OCPBUGS-8428
     {{ .exclude | coll.Append "step_image_registries" | toYAML | strings.Indent 4 | strings.TrimSpace }}
+{{- end -}}

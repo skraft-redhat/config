@@ -16,9 +16,9 @@ endif
 	@mkdir -p $(*)
 	@env NAME=$(*) $(GOMPLATE) -d data=$(DATA_JSON) --file $< \
 		-t rhtap=$(POLICY_RHTAP_TEMPLATE) -t github=$(POLICY_GITHUB_TEMPLATE) \
-		> $@
+		-o $@
 
-POLICY_FILES=$(shell jq -r '"\(.[].name)/policy.yaml"' src/data.json)
+POLICY_FILES=$(shell jq -r '"\(keys | .[])/policy.yaml"' src/data.json)
 
 README_TEMPLATE=src/README.md.tmpl
 README_RHTAP_TEMPLATE=src/README-rhtap.md.tmpl

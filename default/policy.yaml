@@ -13,6 +13,7 @@
 #       value: github.com/enterprise-contract/config//default
 #     ...
 #
+name: Default
 description: >-
   Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new RHTAP applications.
   Available collections are defined in

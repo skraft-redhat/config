@@ -13,23 +13,28 @@ this section. They can be used when creating an Integration Test in RHTAP as per
 here](https://redhat-appstudio.github.io/docs.appstudio.io/Documentation/main/how-to-guides/proc_managing-compliance-with-the-enterprise-contract/).
 
 The policy configuration files are:
-{{ range ds "data" }}
-{{- if not (index . "deprecated") }}
-{{- if eq .environment "rhtap" }}
-{{ template "rhtap" . }}
-{{- end -}}
-{{- end -}}
+{{ range $k, $v := ds "data" }}
+  {{- with coll.Dict "directory" $k "data" $v }}
+    {{- if not (index .data "deprecated") }}
+      {{- if eq .data.environment "rhtap" }}
+        {{- template "rhtap" . }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
 {{- end }}
+
 ## GitHub
 
 Container images built via [GitHub Actions](https://docs.github.com/actions) can be verified with
 the following policy configurations.
-{{ range ds "data" }}
-{{- if not (index . "deprecated") }}
-{{- if eq .environment "github" }}
-{{ template "github" . }}
-{{- end }}
-{{- end -}}
+{{ range $k, $v := ds "data" }}
+  {{- with coll.Dict "directory" $k "data" $v }}
+    {{- if not (index .data "deprecated") }}
+      {{- if eq .data.environment "github" }}
+        {{- template "github" . }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
 {{- end }}
 ## See also
 

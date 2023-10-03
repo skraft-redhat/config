@@ -5,6 +5,7 @@
 #     --public-key key.pub \
 #     --policy github.com/enterprise-contract/config//github-default
 #
+name: GitHub Default
 description: >-
   Rules for container images built via GitHub Workflows.
 
