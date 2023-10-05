@@ -32,10 +32,8 @@ sources:
     data:
       - oci::quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:latest
       - github.com/release-engineering/rhtap-ec-policy//data
-
-configuration:
-  include:
-    - '@redhat'
-
-  exclude:
-    []
+    config:
+      include:
+        - '@redhat'
+      exclude:
+        []

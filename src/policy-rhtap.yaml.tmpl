@@ -37,11 +37,10 @@ sources:
     data:
       - oci::quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:latest
       - github.com/release-engineering/rhtap-ec-policy//data
+    config:
+      include:
+        {{ .include | toYAML | strings.Indent 8 | strings.TrimSpace }}
+      exclude:
+        {{ .exclude | toYAML | strings.Indent 8 | strings.TrimSpace }}
 
-configuration:
-  include:
-    {{ .include | toYAML | strings.Indent 4 | strings.TrimSpace }}
-
-  exclude:
-    {{ .exclude | toYAML | strings.Indent 4 | strings.TrimSpace }}
 {{- end -}}

@@ -15,10 +15,8 @@ sources:
       - github.com/enterprise-contract/ec-policies//policy/lib
       - github.com/enterprise-contract/ec-policies//policy/release
     data: []
-
-configuration:
-  include:
-    - '@github'
-
-  exclude:
-    []
+    config:
+      include:
+        - '@github'
+      exclude:
+        []
