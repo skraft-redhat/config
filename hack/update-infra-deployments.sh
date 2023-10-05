@@ -70,7 +70,7 @@ echo '#
 # Figure out which policy config files to use.
 policy_configs="$(
     < src/data.json \
-    jq -r '.[] | select(.environment == "rhtap") | select(.deprecated | not) | "\(.name)/policy.yaml"' \
+    jq -r 'to_entries| .[] | select(.value.environment == "rhtap") | select(.value.deprecated | not) | "\(.key)/policy.yaml"' \
     | sort)"
 
 for policy_config in $policy_configs; do
