@@ -48,7 +48,7 @@ rhtap_data="github.com/${rhtap_data_gh_repo}//data?ref=${head_commit}"
 echo $rhtap_data
 
 # Make it easier to load the policy configs.
-cd "$(git root)"
+cd "$(git rev-parse --show-toplevel)"
 
 # Something else is reponsible for maintaining the policy URL refs. Here we save their current value
 # so we can ensure they stay the same. As a sanity check, we ensure that a single policy URL is used
