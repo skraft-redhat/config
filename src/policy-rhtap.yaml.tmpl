@@ -43,7 +43,5 @@ configuration:
     {{ .include | toYAML | strings.Indent 4 | strings.TrimSpace }}
 
   exclude:
-    # Exclude step_image_registries for now since it can cause false
-    # positives due to https://issues.redhat.com/browse/OCPBUGS-8428
-    {{ .exclude | coll.Append "step_image_registries" | toYAML | strings.Indent 4 | strings.TrimSpace }}
+    {{ .exclude | toYAML | strings.Indent 4 | strings.TrimSpace }}
 {{- end -}}

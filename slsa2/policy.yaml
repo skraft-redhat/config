@@ -42,6 +42,4 @@ configuration:
     - '@slsa2'
 
   exclude:
-    # Exclude step_image_registries for now since it can cause false
-    # positives due to https://issues.redhat.com/browse/OCPBUGS-8428
-    - step_image_registries
+    []
