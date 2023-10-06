@@ -38,8 +38,5 @@ configuration:
     - '@redhat'
 
   exclude:
-    # Exclude step_image_registries for now since it can cause false
-    # positives due to https://issues.redhat.com/browse/OCPBUGS-8428
     - hermetic_build_task
     - tasks.required_tasks_found:prefetch-dependencies
-    - step_image_registries
