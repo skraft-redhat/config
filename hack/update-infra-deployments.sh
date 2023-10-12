@@ -31,21 +31,10 @@ if [[ ! -f "${OUTPUT}" ]]; then
     exit 1
 fi
 
-# Resolve the acceptable bundles image to a digest.
-acceptable_bundles='quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:latest'
-echo "Pinning ${acceptable_bundles}..."
-digest="$(skopeo manifest-digest <(skopeo inspect "docker://${acceptable_bundles}" --raw))"
-acceptable_bundles_data="oci::${acceptable_bundles}@${digest}"
-echo $acceptable_bundles_data
-
-# Resolve the data files from the rhtap-ec-policy repo to a commit ID.
-rhtap_data_gh_repo='release-engineering/rhtap-ec-policy'
-echo "Pinning GitHub repo ${rhtap_data_gh_repo}..."
-head_commit="$(
-    gh api "/repos/${rhtap_data_gh_repo}/git/matching-refs/heads/main" --jq '.[0].object.sha'
-)"
-rhtap_data="github.com/${rhtap_data_gh_repo}//data?ref=${head_commit}"
-echo $rhtap_data
+# NOTE: Data sources are used via transient references. Some data sources, e.g. acceptable data
+# bundles, are updated very frequently (multiple times a day in some cases). Propagating those
+# changes to other repositories via git worfklows is cumbersome. Also, the risk of introducing a
+# breaking change to a data source is lower than changes to the policy rules themselves.
 
 # Make it easier to load the policy configs.
 cd "$(git rev-parse --show-toplevel)"
@@ -81,7 +70,7 @@ for policy_config in $policy_configs; do
     fi
 
     echo "---" >> "${OUTPUT}"
-    name="${name}" data0="${rhtap_data}" data1="${acceptable_bundles_data}" policy="${policy_url}" \
+    name="${name}" policy="${policy_url}" \
     yq -P -o yaml '{
         "apiVersion": "appstudio.redhat.com/v1alpha1",
         "kind": "EnterpriseContractPolicy",
@@ -90,7 +79,6 @@ for policy_config in $policy_configs; do
             "namespace": "enterprise-contract-service"
         },
         "spec": . }
-        | .spec.sources[].data = [strenv(data0), strenv(data1)]
         | .spec.sources[].policy = [strenv(policy)]
         | sort_keys(..) ' \
         "${policy_config}"  >> "${OUTPUT}"
