@@ -32,11 +32,9 @@ sources:
     data:
       - oci::quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:latest
       - github.com/release-engineering/rhtap-ec-policy//data
-
-configuration:
-  include:
-    - '@redhat'
-
-  exclude:
-    - hermetic_build_task
-    - tasks.required_tasks_found:prefetch-dependencies
+    config:
+      include:
+        - '@redhat'
+      exclude:
+        - hermetic_build_task
+        - tasks.required_tasks_found:prefetch-dependencies

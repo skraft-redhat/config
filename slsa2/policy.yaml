@@ -34,12 +34,10 @@ sources:
     data:
       - oci::quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:latest
       - github.com/release-engineering/rhtap-ec-policy//data
-
-configuration:
-  include:
-    - '@minimal'
-    - '@slsa1'
-    - '@slsa2'
-
-  exclude:
-    []
+    config:
+      include:
+        - '@minimal'
+        - '@slsa1'
+        - '@slsa2'
+      exclude:
+        []

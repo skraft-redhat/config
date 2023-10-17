@@ -20,11 +20,9 @@ sources:
       - github.com/enterprise-contract/ec-policies//policy/lib
       - github.com/enterprise-contract/ec-policies//policy/release
     data: []
-
-configuration:
-  include:
-    {{ .include | toYAML | strings.Indent 4 | strings.TrimSpace }}
-
-  exclude:
-    {{ .exclude | toYAML | strings.Indent 4 | strings.TrimSpace }}
+    config:
+      include:
+        {{ .include | toYAML | strings.Indent 8 | strings.TrimSpace }}
+      exclude:
+        {{ .exclude | toYAML | strings.Indent 8 | strings.TrimSpace }}
 {{- end -}}
