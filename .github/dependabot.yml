@@ -5,3 +5,4 @@ updates:
     schedule:
       interval: weekly
       time: '15:00'
+      timezone: Etc/UTC
