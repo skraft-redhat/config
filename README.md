@@ -20,7 +20,7 @@ Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//default`
 * Source: [default/policy.yaml](https://github.com/enterprise-contract/config/blob/main/default/policy.yaml)
-* Collections: [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1), [@slsa2](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa2), [@slsa3](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa3)
+* Collections: [@slsa3](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa3)
 * RHTAP Integration Test pipeline definition:
   * Github URL: `https://github.com/redhat-appstudio/build-definitions`
   * Path in repository: [`pipelines/enterprise-contract.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract.yaml)
@@ -64,7 +64,7 @@ Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic 
 
 * URL for Enterprise Contract: `github.com/enterprise-contract/config//slsa3`
 * Source: [slsa3/policy.yaml](https://github.com/enterprise-contract/config/blob/main/slsa3/policy.yaml)
-* Collections: [@minimal](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#minimal), [@slsa1](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa1), [@slsa2](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa2), [@slsa3](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa3)
+* Collections: [@minimal](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#minimal), [@slsa3](https://enterprisecontract.dev/docs/ec-policies/release_policy.html#slsa3)
 * RHTAP Integration Test pipeline definition:
   * Github URL: `https://github.com/redhat-appstudio/build-definitions`
   * Path in repository: [`pipelines/enterprise-contract-slsa3.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa3.yaml)

@@ -35,8 +35,6 @@ sources:
     config:
       include:
         - '@minimal'
-        - '@slsa1'
-        - '@slsa2'
         - '@slsa3'
       exclude:
         []
