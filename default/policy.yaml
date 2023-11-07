@@ -34,8 +34,6 @@ sources:
       - github.com/release-engineering/rhtap-ec-policy//data
     config:
       include:
-        - '@slsa1'
-        - '@slsa2'
         - '@slsa3'
       exclude:
         []
