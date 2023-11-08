@@ -80,6 +80,7 @@ for policy_config in $policy_configs; do
         },
         "spec": . }
         | .spec.sources[].policy = [strenv(policy)]
+        | .spec.publicKey = "k8s://openshift-pipelines/public-key"
         | sort_keys(..) ' \
         "${policy_config}"  >> "${OUTPUT}"
 done
