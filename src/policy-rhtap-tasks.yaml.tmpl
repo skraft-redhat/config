@@ -1,0 +1,23 @@
+{{ with .data -}}
+# To use this policy with the ec command line:
+#   ec validate input \
+#     --file $FILE \
+#     --policy github.com/enterprise-contract/config//{{ $.directory }}
+#
+name: {{.name}}
+description: >-
+  {{ .description }}
+sources:
+  - name: Default
+    policy:
+      - github.com/enterprise-contract/ec-policies//policy/lib
+      - github.com/enterprise-contract/ec-policies//policy/task
+    data:
+      - github.com/release-engineering/rhtap-ec-policy//data
+    config:
+      include:
+        {{ .include | toYAML | strings.Indent 8 | strings.TrimSpace }}
+      exclude:
+        {{ .exclude | toYAML | strings.Indent 8 | strings.TrimSpace }}
+
+{{- end -}}

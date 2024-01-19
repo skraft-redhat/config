@@ -4,6 +4,8 @@
     {{- with coll.Dict "directory" $key "data" $data }}
       {{- if eq .data.environment "rhtap" }}
         {{- template "rhtap" . }}
+      {{- else if eq .data.environment "rhtap-tasks" }}
+        {{- template "rhtap-tasks" . }}
       {{- else }}
         {{- template "github" . }}
       {{- end }}

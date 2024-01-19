@@ -42,12 +42,46 @@ cd "$(git rev-parse --show-toplevel)"
 # Something else is reponsible for maintaining the policy URL refs. Here we save their current value
 # so we can ensure they stay the same. As a sanity check, we ensure that a single policy URL is used
 # across all policies for the sake of simplicity given that is the current state.
-policy_url="$(< "${OUTPUT}" yq '.spec.sources[].policy[]' | grep -v -- '---' | sort -u)"
-if [[ "$(echo $policy_url | wc -w)" -ne "1" ]]; then
-    echo -e "Unexpected amount of policy URLs: \n${policy_url}"
-    exit 1
-fi
-echo $policy_url
+function get_policy_url() {
+    local marker
+    local url
+
+    marker="$1"
+
+    url="$(
+        < "${OUTPUT}" \
+        marker="${marker}" \
+        yq '.spec.sources[].policy[] | select(contains(strenv(marker)))' -o json -r | sort -u
+    )"
+
+    if [[ "$(echo $url | wc -w)" -gt "1" ]]; then
+        echo -e "Unexpected amount of policy URLs: \n${url}"
+        exit 1
+    fi
+
+    printf "${url}"
+}
+
+function get_policy_configs() {
+    local configs
+    local environment
+
+    environment="$1"
+
+    configs="$(
+        < src/data.json \
+        environment="${environment}" \
+        jq -r 'to_entries | .[] | select(.value.environment == env.environment) | select(.value.deprecated | not) | "\(.key)/policy.yaml"' \
+    | sort)"
+
+    printf "${configs}"
+}
+
+release_policy_url="$(get_policy_url "ec-release-policy")"
+echo "Release policy URL: ${release_policy_url}"
+
+task_policy_url="$(get_policy_url "ec-task-policy")"
+echo "Task policy URL: ${task_policy_url}"
 
 # Always generate the output file from scratch and add some helper text on the generated file.
 echo '#
@@ -56,33 +90,55 @@ echo '#
 #
 ' > "${OUTPUT}"
 
-# Figure out which policy config files to use.
-policy_configs="$(
-    < src/data.json \
-    jq -r 'to_entries| .[] | select(.value.environment == "rhtap") | select(.value.deprecated | not) | "\(.key)/policy.yaml"' \
-    | sort)"
+if [[ ! -z $release_policy_url ]]; then
+    # Figure out which release policy config files to use.
+    policy_configs="$(get_policy_configs "rhtap")"
 
-for policy_config in $policy_configs; do
-    name="$(dirname $policy_config)"
-    # For legacy reasons, the everything config is called "all" in RHTAP
-    if [[ "${name}" == 'everything' ]]; then
-        name='all'
-    fi
+    for policy_config in $policy_configs; do
+        name="$(dirname $policy_config)"
+        # For legacy reasons, the everything config is called "all" in RHTAP
+        if [[ "${name}" == 'everything' ]]; then
+            name='all'
+        fi
 
-    echo "---" >> "${OUTPUT}"
-    name="${name}" policy="${policy_url}" \
-    yq -P -o yaml '{
-        "apiVersion": "appstudio.redhat.com/v1alpha1",
-        "kind": "EnterpriseContractPolicy",
-        "metadata": {
-            "name": strenv(name),
-            "namespace": "enterprise-contract-service"
-        },
-        "spec": . }
-        | .spec.sources[].policy = [strenv(policy)]
-        | .spec.publicKey = "k8s://openshift-pipelines/public-key"
-        | sort_keys(..) ' \
-        "${policy_config}"  >> "${OUTPUT}"
-done
+        echo "---" >> "${OUTPUT}"
+        name="${name}" policy="${release_policy_url}" \
+        yq -P -o yaml '{
+            "apiVersion": "appstudio.redhat.com/v1alpha1",
+            "kind": "EnterpriseContractPolicy",
+            "metadata": {
+                "name": strenv(name),
+                "namespace": "enterprise-contract-service"
+            },
+            "spec": . }
+            | .spec.sources[].policy = [strenv(policy)]
+            | .spec.publicKey = "k8s://openshift-pipelines/public-key"
+            | sort_keys(..) ' \
+            "${policy_config}"  >> "${OUTPUT}"
+    done
+fi
+
+if [[ ! -z $task_policy_url ]]; then
+    # Figure out which task policy config files to use.
+    task_policy_configs="$(get_policy_configs "rhtap-tasks")"
+
+    for policy_config in $task_policy_configs; do
+        name="$(dirname $policy_config)"
+
+        echo "---" >> "${OUTPUT}"
+        name="${name}" policy="${task_policy_url}" \
+        yq -P -o yaml '{
+            "apiVersion": "appstudio.redhat.com/v1alpha1",
+            "kind": "EnterpriseContractPolicy",
+            "metadata": {
+                "name": strenv(name),
+                "namespace": "enterprise-contract-service"
+            },
+            "spec": . }
+            | .spec.sources[].policy = [strenv(policy)]
+            | sort_keys(..) ' \
+            "${policy_config}"  >> "${OUTPUT}"
+    done
+fi
 
 echo 'infra-deployments updated successfully'

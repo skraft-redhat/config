@@ -1,0 +1,8 @@
+{{ with .data }}
+### {{ .name }}
+
+{{ .description }}
+
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//{{ $.directory }}`
+* Source: [{{ $.directory }}/policy.yaml](https://github.com/enterprise-contract/config/blob/main/{{ $.directory }}/policy.yaml)
+{{- end }}
