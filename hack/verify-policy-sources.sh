@@ -55,7 +55,7 @@ verify_url() {
     fi
 }
 
-policy_configs="$(< src/data.json yq '.[].name + "/policy.yaml"' -r)"
+policy_configs="$(< src/data.json yq '. | keys | .[] + "/policy.yaml"' -r)"
 
 policy_urls="$(yq eval '.sources[].policy[]' $policy_configs | grep -v -- '---' | sort -u)"
 for url in $policy_urls; do
