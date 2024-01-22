@@ -70,6 +70,21 @@ Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic 
   * Path in repository: [`pipelines/enterprise-contract-slsa3.yaml`](https://github.com/redhat-appstudio/build-definitions/blob/main/pipelines/enterprise-contract-slsa3.yaml)
 
 
+## Red Hat Trusted Application Pipeline - Tasks
+
+These are policy rules used to verify Tekton Task definitions meet the Red Hat guidelines for being
+considered trusted.
+
+The policy configuration files are:
+
+### Red Hat Trusted Tasks
+
+Rules used to verify Tekton Task definitions comply to Red Hat's standards.
+
+* URL for Enterprise Contract: `github.com/enterprise-contract/config//redhat-trusted-tasks`
+* Source: [redhat-trusted-tasks/policy.yaml](https://github.com/enterprise-contract/config/blob/main/redhat-trusted-tasks/policy.yaml)
+
+
 ## GitHub
 
 Container images built via [GitHub Actions](https://docs.github.com/actions) can be verified with

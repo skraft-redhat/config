@@ -6,28 +6,30 @@ DATA_JSON=src/data.json
 
 POLICY_TEMPLATE=src/policy.yaml.tmpl
 POLICY_RHTAP_TEMPLATE=src/policy-rhtap.yaml.tmpl
+POLICY_RHTAP_TASKS_TEMPLATE=src/policy-rhtap-tasks.yaml.tmpl
 POLICY_GITHUB_TEMPLATE=src/policy-github.yaml.tmpl
 
 ifndef GOMPLATE
 	GOMPLATE=gomplate
 endif
 
-%/policy.yaml: $(POLICY_TEMPLATE) $(DATA_JSON) $(POLICY_RHTAP_TEMPLATE) $(POLICY_GITHUB_TEMPLATE) Makefile
+%/policy.yaml: $(POLICY_TEMPLATE) $(DATA_JSON) $(POLICY_RHTAP_TEMPLATE) $(POLICY_RHTAP_TASKS_TEMPLATE) $(POLICY_GITHUB_TEMPLATE) Makefile
 	@mkdir -p $(*)
 	@env NAME=$(*) $(GOMPLATE) -d data=$(DATA_JSON) --file $< \
-		-t rhtap=$(POLICY_RHTAP_TEMPLATE) -t github=$(POLICY_GITHUB_TEMPLATE) \
+		-t rhtap=$(POLICY_RHTAP_TEMPLATE) -t rhtap-tasks=$(POLICY_RHTAP_TASKS_TEMPLATE) -t github=$(POLICY_GITHUB_TEMPLATE) \
 		-o $@
 
 POLICY_FILES=$(shell jq -r '"\(keys | .[])/policy.yaml"' src/data.json)
 
 README_TEMPLATE=src/README.md.tmpl
 README_RHTAP_TEMPLATE=src/README-rhtap.md.tmpl
+README_RHTAP_TASKS_TEMPLATE=src/README-rhtap-tasks.md.tmpl
 README_GITHUB_TEMPLATE=src/README-github.md.tmpl
 README_FILE=README.md
 
-$(README_FILE): $(README_TEMPLATE) $(DATA_JSON) $(README_RHTAP_TEMPLATE) $(README_GITHUB_TEMPLATE) Makefile
+$(README_FILE): $(README_TEMPLATE) $(DATA_JSON) $(README_RHTAP_TEMPLATE) $(README_RHTAP_TASKS_TEMPLATE) $(README_GITHUB_TEMPLATE) Makefile
 	@$(GOMPLATE) -d data=$(DATA_JSON) --file $< \
-		-t rhtap=$(README_RHTAP_TEMPLATE) -t github=$(README_GITHUB_TEMPLATE) \
+		-t rhtap=$(README_RHTAP_TEMPLATE) -t rhtap-tasks=$(README_RHTAP_TASKS_TEMPLATE) -t github=$(README_GITHUB_TEMPLATE) \
 		> $@
 
 all: $(POLICY_FILES) $(README_FILE)

@@ -23,6 +23,22 @@ The policy configuration files are:
   {{- end }}
 {{- end }}
 
+## Red Hat Trusted Application Pipeline - Tasks
+
+These are policy rules used to verify Tekton Task definitions meet the Red Hat guidelines for being
+considered trusted.
+
+The policy configuration files are:
+{{ range $k, $v := ds "data" }}
+  {{- with coll.Dict "directory" $k "data" $v }}
+    {{- if not (index .data "deprecated") }}
+      {{- if eq .data.environment "rhtap-tasks" }}
+        {{- template "rhtap-tasks" . }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
 ## GitHub
 
 Container images built via [GitHub Actions](https://docs.github.com/actions) can be verified with

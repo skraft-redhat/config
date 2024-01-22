@@ -26,7 +26,10 @@
     "description": "Includes most of the rules and policies required internally by Red Hat when building Red Hat products. It excludes the requirement of hermetic builds.",
     "environment": "rhtap",
     "include": ["@redhat"],
-    "exclude": ["hermetic_build_task", "tasks.required_tasks_found:prefetch-dependencies"]
+    "exclude": [
+      "hermetic_build_task",
+      "tasks.required_tasks_found:prefetch-dependencies"
+    ]
   },
   "slsa3": {
     "name": "SLSA3",
@@ -40,6 +43,13 @@
     "description": "Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.",
     "environment": "rhtap",
     "include": ["*"],
+    "exclude": []
+  },
+  "redhat-trusted-tasks": {
+    "name": "Red Hat Trusted Tasks",
+    "description": "Rules used to verify Tekton Task definitions comply to Red Hat's standards.",
+    "environment": "rhtap-tasks",
+    "include": ["kind", "step_image_registries"],
     "exclude": []
   },
   "github-default": {
