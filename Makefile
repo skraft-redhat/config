@@ -52,4 +52,4 @@ ci: update-needed-check yaml-parse-check
 
 # See https://docs.gomplate.ca/installing/ for other installation methods
 install-gomplate:
-	go install github.com/hairyhenderson/gomplate/v4/cmd/gomplate@latest
+	go install github.com/hairyhenderson/gomplate/v3/cmd/gomplate@latest

@@ -16,6 +16,5 @@ sources:
     config:
       include:
         - kind
-        - step_image_registries
       exclude:
         []
