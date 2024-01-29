@@ -49,7 +49,7 @@
     "name": "Red Hat Trusted Tasks",
     "description": "Rules used to verify Tekton Task definitions comply to Red Hat's standards.",
     "environment": "rhtap-tasks",
-    "include": ["kind", "step_image_registries"],
+    "include": ["kind"],
     "exclude": []
   },
   "github-default": {
