@@ -15,7 +15,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# Updates a local clone of redhat-appstudio/infra-deployments to use the RHTAP
+# Updates a local clone of redhat-appstudio/infra-deployments to use the Konflux
 # configs defined in this repo.
 # Usage:
 #   update-infra-deployments.sh <PATH_TO_INFRA_DEPLOYMENTS>
@@ -85,18 +85,18 @@ echo "Task policy URL: ${task_policy_url}"
 
 # Always generate the output file from scratch and add some helper text on the generated file.
 echo '#
-# The contents of this file are automatically generated based on the RHTAP configs defined in the
+# The contents of this file are automatically generated based on the Konflux configs defined in the
 # github.com/enterprise-contract/config repo. Any manual modifications will be overridden.
 #
 ' > "${OUTPUT}"
 
 if [[ ! -z $release_policy_url ]]; then
     # Figure out which release policy config files to use.
-    policy_configs="$(get_policy_configs "rhtap")"
+    policy_configs="$(get_policy_configs "konflux")"
 
     for policy_config in $policy_configs; do
         name="$(dirname $policy_config)"
-        # For legacy reasons, the everything config is called "all" in RHTAP
+        # For legacy reasons, the everything config is called "all" in Konflux
         if [[ "${name}" == 'everything' ]]; then
             name='all'
         fi
@@ -120,7 +120,7 @@ fi
 
 if [[ ! -z $task_policy_url ]]; then
     # Figure out which task policy config files to use.
-    task_policy_configs="$(get_policy_configs "rhtap-tasks")"
+    task_policy_configs="$(get_policy_configs "konflux-tasks")"
 
     for policy_config in $task_policy_configs; do
         name="$(dirname $policy_config)"

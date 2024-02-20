@@ -5,7 +5,7 @@
 #     --public-key key.pub \
 #     --policy github.com/enterprise-contract/config//slsa3
 #
-# To use with an RHTAP Enterprise Contract Integration Test CR:
+# To use with an Konflux Enterprise Contract Integration Test CR:
 #   ...
 #   spec:
 #     params:
@@ -15,7 +15,7 @@
 #
 name: SLSA3
 description: >-
-  Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.
+  Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all Konflux builds.
   Available collections are defined in
   https://redhat-appstudio.github.io/docs.stonesoup.io/ec-policies/release_policy.html#_available_rule_collections.
   If a different policy configuration is desired, this resource can serve as a starting point.

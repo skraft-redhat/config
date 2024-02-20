@@ -5,7 +5,7 @@
 #     --public-key key.pub \
 #     --policy github.com/enterprise-contract/config//everything
 #
-# To use with an RHTAP Enterprise Contract Integration Test CR:
+# To use with an Konflux Enterprise Contract Integration Test CR:
 #   ...
 #   spec:
 #     params:
@@ -15,7 +15,7 @@
 #
 name: Everything (experimental)
 description: >-
-  Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.
+  Include every rule in the default policy source. For experiments only. This is not expected to pass for Konflux builds without excluding some rules.
   Available collections are defined in
   https://redhat-appstudio.github.io/docs.stonesoup.io/ec-policies/release_policy.html#_available_rule_collections.
   If a different policy configuration is desired, this resource can serve as a starting point.
