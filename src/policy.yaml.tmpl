@@ -2,10 +2,10 @@
 {{- range $key, $data := ds "data" }}
   {{- if eq $key $name }}
     {{- with coll.Dict "directory" $key "data" $data }}
-      {{- if eq .data.environment "rhtap" }}
-        {{- template "rhtap" . }}
-      {{- else if eq .data.environment "rhtap-tasks" }}
-        {{- template "rhtap-tasks" . }}
+      {{- if eq .data.environment "konflux" }}
+        {{- template "konflux" . }}
+      {{- else if eq .data.environment "konflux-tasks" }}
+        {{- template "konflux-tasks" . }}
       {{- else }}
         {{- template "github" . }}
       {{- end }}

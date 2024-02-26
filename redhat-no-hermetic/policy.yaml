@@ -5,7 +5,7 @@
 #     --public-key key.pub \
 #     --policy github.com/enterprise-contract/config//redhat-no-hermetic
 #
-# To use with an RHTAP Enterprise Contract Integration Test CR:
+# To use with an Konflux Enterprise Contract Integration Test CR:
 #   ...
 #   spec:
 #     params:

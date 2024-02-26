@@ -5,7 +5,7 @@
 #     --public-key key.pub \
 #     --policy github.com/enterprise-contract/config//default
 #
-# To use with an RHTAP Enterprise Contract Integration Test CR:
+# To use with an Konflux Enterprise Contract Integration Test CR:
 #   ...
 #   spec:
 #     params:
@@ -15,7 +15,7 @@
 #
 name: Default
 description: >-
-  Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new RHTAP applications.
+  Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new Konflux applications.
   Available collections are defined in
   https://redhat-appstudio.github.io/docs.stonesoup.io/ec-policies/release_policy.html#_available_rule_collections.
   If a different policy configuration is desired, this resource can serve as a starting point.

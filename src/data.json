@@ -1,15 +1,15 @@
 {
   "default": {
     "name": "Default",
-    "description": "Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new RHTAP applications.",
-    "environment": "rhtap",
+    "description": "Includes rules for levels 1, 2 & 3 of SLSA v0.1. This is the default config used for new Konflux applications.",
+    "environment": "konflux",
     "include": ["@slsa3"],
     "exclude": []
   },
   "minimal": {
     "name": "Minimal (deprecated)",
-    "description": "Includes a set of basic checks that are expected to pass for all RHTAP builds.",
-    "environment": "rhtap",
+    "description": "Includes a set of basic checks that are expected to pass for all Konflux builds.",
+    "environment": "konflux",
     "include": ["@minimal"],
     "exclude": [],
     "deprecated": true
@@ -17,14 +17,14 @@
   "redhat": {
     "name": "Red Hat",
     "description": "Includes the full set of rules and policies required internally by Red Hat when building Red Hat products.",
-    "environment": "rhtap",
+    "environment": "konflux",
     "include": ["@redhat"],
     "exclude": []
   },
   "redhat-no-hermetic": {
     "name": "Red Hat (non hermetic)",
     "description": "Includes most of the rules and policies required internally by Red Hat when building Red Hat products. It excludes the requirement of hermetic builds.",
-    "environment": "rhtap",
+    "environment": "konflux",
     "include": ["@redhat"],
     "exclude": [
       "hermetic_build_task",
@@ -33,22 +33,22 @@
   },
   "slsa3": {
     "name": "SLSA3",
-    "description": "Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all RHTAP builds.",
-    "environment": "rhtap",
+    "description": "Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all Konflux builds.",
+    "environment": "konflux",
     "include": ["@minimal", "@slsa3"],
     "exclude": []
   },
   "everything": {
     "name": "Everything (experimental)",
-    "description": "Include every rule in the default policy source. For experiments only. This is not expected to pass for RHTAP builds without excluding some rules.",
-    "environment": "rhtap",
+    "description": "Include every rule in the default policy source. For experiments only. This is not expected to pass for Konflux builds without excluding some rules.",
+    "environment": "konflux",
     "include": ["*"],
     "exclude": []
   },
   "redhat-trusted-tasks": {
     "name": "Red Hat Trusted Tasks",
     "description": "Rules used to verify Tekton Task definitions comply to Red Hat's standards.",
-    "environment": "rhtap-tasks",
+    "environment": "konflux-tasks",
     "include": ["kind"],
     "exclude": []
   },
