@@ -25,11 +25,11 @@ description: >-
 sources:
   - name: Default
     policy:
-      - github.com/enterprise-contract/ec-policies//policy/lib
-      - github.com/enterprise-contract/ec-policies//policy/release
+      - github.com/redhat-gpe/ec-policies//policy/lib
+      - github.com/redhat-gpe/ec-policies//policy/release
     data:
-      - oci::quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:latest
-      - github.com/release-engineering/rhtap-ec-policy//data
+      - oci::quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:1714135376
+      - github.com/redhat-gpe/rhtap-ec-policy//data
     config:
       include:
         - '@slsa3'
