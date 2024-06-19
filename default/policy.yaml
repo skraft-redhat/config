@@ -33,5 +33,4 @@ sources:
     config:
       include:
         - '@slsa3'
-      exclude:
-        - 'slsa_source_correlated.attested_source_code_reference'
+      exclude: []
