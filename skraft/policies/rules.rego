@@ -19,7 +19,7 @@ deny contains result if {
 	some attestation in input.attestations 
 	attestation.statement.predicateType == "https://slsa.dev/provenance/v0.2"
 
-	expected := "https://localhost/dummy-id"
+	expected := "https://tekton.dev/chains/v2"
 	got := attestation.statement.predicate.builder.id
 
 	expected != got
