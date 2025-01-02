@@ -13,26 +13,15 @@
 #       value: github.com/enterprise-contract/config//slsa3
 #     ...
 #
-name: SLSA3
+name: STEPHAN KRAFT
 description: >-
-  Rules specifically related to levels 1, 2 & 3 of SLSA v0.1, plus a set of basic checks that are expected to pass for all Konflux builds.
-  Available collections are defined in
-  https://redhat-appstudio.github.io/docs.stonesoup.io/ec-policies/release_policy.html#_available_rule_collections.
-  If a different policy configuration is desired, this resource can serve as a starting point.
-  See the docs on how to include and exclude rules
-  https://redhat-appstudio.github.io/docs.stonesoup.io/ec-policies/policy_configuration.html#_including_and_excluding_rules.
-
+  These are my rules
 sources:
   - name: Default
     policy:
-      - github.com/enterprise-contract/ec-policies//policy/lib
-      - github.com/enterprise-contract/ec-policies//policy/release
-    data:
-      - oci::quay.io/redhat-appstudio-tekton-catalog/data-acceptable-bundles:latest
-      - github.com/release-engineering/rhtap-ec-policy//data
+      - github.com/skraft-redhat/config//skraft/policies/
     config:
       include:
-        - '@minimal'
-        - '@slsa3'
+        - '*'
       exclude:
         []
